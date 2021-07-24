@@ -1,0 +1,65 @@
+
+.container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:40px;
+}
+.phoneimg{
+    background-image: url(./LoginImages/mainn.png);
+    height:618px;
+    width:454px;
+    position:relative;
+}
+.float_img{
+    position:absolute;
+    height: 435px;
+    width: 248px;
+    top: 96px;
+    left: 147px;
+}
+.modal_container{
+    height:618px;
+    width:454px;
+    /* border:1px solid; */
+}
+.instaLogo{
+    /* border:1px solid; */
+    height:80px;
+    margin-top:10px;
+    margin-left: 84px;
+}
+.login-area{
+    border:1px solid rgb(163, 161, 161);
+    width: 377px;
+    height: 340px;
+    margin: auto;
+    margin-top:5px;
+}
+.inp-field{
+    height: 32px;
+    width: 283px;
+    margin-bottom: 5px;
+    margin-left:43px ;
+}
+.login-btn{
+    height:30px;
+    width:30px;
+    width:292px;
+    background-color: rgb(0, 149, 246);
+    border:none;
+    border-radius: 4px;
+    margin-left: 40px;
+    color:white;
+    font-size: medium;
+}
+@media screen and (max-width :925px) {
+    .phoneimg{
+        width:0px;
+        height:0px;
+    }
+    .float_img{
+        width:0px;
+        height:0px; 
+    }
+}
