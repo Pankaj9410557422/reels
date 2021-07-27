@@ -1,17 +1,23 @@
-import React,{useContext} from 'react'
+import React,{useContext,useState,useEffect} from 'react'
 import { AuthContext } from '../Context/AuthProvider'
+import Navbar from './Navbar';
+import {database} from './firebaseData'
 
 
 
 function Feed() {
-    const {logout} = useContext(AuthContext);
-    const handleLogout= async()=>{
-        await logout();
-    }
+    const {currentUser} = useContext(AuthContext);
+    const [userData,setUserData] = useState(null);
+    useEffect(()=>{
+        const unsub = database.users.doc(currentUser.uid).onSnapshot((doc)=>{
+            // console.log(doc);
+            setUserData(doc.data());
+        })
+    },[currentUser])
     return (
         <div>
-            <h1>Welcome to feed</h1>
-            <button type="submit" onClick={handleLogout}>Logout</button>
+            <Navbar/>
+            
         </div>
     )
 }
