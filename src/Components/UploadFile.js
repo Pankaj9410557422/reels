@@ -20,19 +20,19 @@ function UploadFile(props) {
         const file = e?.target?.files[0];
         if(!file){
             setError('Please select a file');
-            setTimeout(()=>{setError('')},2000);
+            setTimeout(()=>{setError(null)},2000);
             return;
         }
 
         if(types.indexOf(file.type)==-1){
-            setError('Please select a vedio file');
-            setTimeout(()=>{setError('')},2000);
+            setError('Please select a video file');
+            setTimeout(()=>{setError(null)},2000);
             return;
         }
 
         if(file.size/(1024*1024)>100){
             setError('File size too big');
-            setTimeout(()=>{setError('')},2000);
+            setTimeout(()=>{setError(null)},2000);
             return;
         }
 
@@ -46,7 +46,7 @@ function UploadFile(props) {
         function f2(error){
             setError(error);
             setTimeout(()=>{
-                setError('');
+                setError(null);
             },2000)
             setLoading(false);
         }
@@ -65,14 +65,14 @@ function UploadFile(props) {
                 }
                 database.posts.add(obj).then(async docRef=>{
                     let res = await database.users.doc(props.userData.userId).update({
-                        postsIds:[...props.userData.postIds,docRef.id]
+                        postIds:[...props.userData.postIds,docRef.id]
                     })
                 }).then(()=>{
                     setLoading(false);
                 }).catch((err)=>{
                     setError(err);
                     setTimeout(()=>{
-                        setError('');
+                        setError(null);
                     },2000);
                     setLoading(false);
                 })
