@@ -7,6 +7,7 @@ import { AuthContext } from '../Context/AuthProvider';
 import instaLogo from './Login/LoginImages/images.png';
 import { white } from 'jest-matcher-utils/node_modules/chalk';
 import HomeIcon from '@material-ui/icons/Home';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MenuAppBar() {
+  let history = useHistory();
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -48,6 +50,7 @@ export default function MenuAppBar() {
   // };
   const handleLogout= async()=>{
     await logout();
+    history.push('/')
 }
 
   return (
@@ -57,7 +60,7 @@ export default function MenuAppBar() {
           <Typography variant="h6" className={classes.title}>
             <img style={{height: "53px", marginTop:"2px", marginLeft:"160px"}} alt="Instagram Logo"src={instaLogo}></img>
           </Typography>
-          <HomeIcon className="home"/>
+          <HomeIcon className={classes.home}/>
         </Toolbar>
       </AppBar>
       <button type="submit" onClick={handleLogout}>Logout</button>

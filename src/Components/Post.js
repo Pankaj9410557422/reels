@@ -76,7 +76,7 @@ function Post({userData=null}) {
   };
       const callback = entries=>{
         entries.forEach(element => {
-            console.log(element);
+            // console.log(element);
             let el = element.target.childNodes[0];
             el.play().then(()=>{
                 //if this video is not in viewport then pause it
