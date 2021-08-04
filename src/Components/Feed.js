@@ -19,7 +19,7 @@ function Feed() {
     },[currentUser])
     return (
         <div>
-            { userData == null ? <CircularProgress/>: <> 
+            { userData != null ?<> 
                 <Navbar userData={userData}/> 
                 <div className="feed-container">
                     <div className="center">
@@ -28,9 +28,12 @@ function Feed() {
                             <Posts userData={userData}/>
                         </div>
                     </div>
-                </div>
-            </>
+                </div>    
+            </>:<CircularProgress/>
             }  
+            
+            
+            
             
         </div>
     )

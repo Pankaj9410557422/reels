@@ -53,6 +53,21 @@
     color:white;
     font-size: medium;
 }
+
+.divider{
+    margin-top:20px;
+    display:flex;
+}
+.sep1{
+    width: 132px;
+    padding-left: 44px;
+    padding-top: 11px;
+}
+.sep2{
+    width: 132px;
+    padding-right: 44px;
+    padding-top: 11px;
+}
 @media screen and (max-width :925px) {
     .phoneimg{
         width:0px;

@@ -19,6 +19,7 @@ import { database } from './firebaseData';
 import Likes from './Likes';
 import AddComment from './AddComment';
 import Comments from './Comments';
+import ModeCommentOutlinedIcon from '@material-ui/icons/ModeCommentOutlined';
 const useStyles = makeStyles({
     root: {
       width: '100%',
@@ -50,9 +51,10 @@ const useStyles = makeStyles({
     },
     ci:{
     
-      color: 'white',
-      left:'9%',
-      cursor:'pointer'
+      color: 'black',
+      cursor:'pointer',
+      height:"50px",
+      paddingLeft:"10px"
     },
     mn:{
       color:'white',
@@ -76,8 +78,8 @@ function Post({userData=null}) {
   };
       const callback = entries=>{
         entries.forEach(element => {
-            // console.log(element);
-            let el = element.target.childNodes[0];
+          let el = element.target.childNodes[1].childNodes[0];
+          // console.log(el);
             el.play().then(()=>{
                 //if this video is not in viewport then pause it
                 if(!el.paused && !element.isIntersecting)
@@ -105,7 +107,7 @@ function Post({userData=null}) {
     }
     ,[])
     useEffect(()=>{
-      let elements = document.querySelectorAll('.videos');
+      let elements = document.querySelectorAll('.cont');
       elements.forEach(el=>{
         observer.observe(el);
       })
@@ -122,14 +124,18 @@ function Post({userData=null}) {
           {
             posts.map((post)=>(
               <React.Fragment key={post.postId}>
-                <div className='videos'>
-                  <Video source={post.pUrl} id={post.pId}/>
-                  <div className='fa' style={{display:'flex'}}>
+                <article className='cont'>
+                <div className='fa'>
                     <Avatar src={post.uProfile}></Avatar>
                     <h4>{post.uName}</h4>
                   </div>
+                  <div className="videos" style={{backgroundColor:"black"}}>
+                  <Video source={post.pUrl} id={post.pId}/>
+                  </div>
+                  <div className="feedback">
                   <Likes userData={userData} postData={post}/>
-                  <ChatBubbleIcon onClick={() => handleClickOpen(post.pId)} className={`${classes.ci} icon-styling`} />
+                  <ModeCommentOutlinedIcon onClick={() => handleClickOpen(post.pId)} className={classes.ci} />
+                </div>
                       <Dialog maxWidth="md" onClose={handleClose} aria-labelledby="customized-dialog-title" open={openId === post.pId}>
                         <MuiDialogContent>
                           <div className='dcontainer'>
@@ -151,8 +157,8 @@ function Post({userData=null}) {
                                     </IconButton>
                                   }
                                   title={post?.uName}
-
-                                />
+                                  
+                                  />
                                 
                                 <hr style={{ border: "none", height: "1px", color: "#dfe6e9", backgroundColor: "#dfe6e9" }} />
                                 <CardContent className={classes.seeComments}>
@@ -171,9 +177,8 @@ function Post({userData=null}) {
                           </div>
                         </MuiDialogContent>
                       </Dialog>
-                </div>
-
-                <div className='place'></div>
+                </article>
+                  <div className="gap"></div>
               </React.Fragment>
             ))
           }
@@ -185,3 +190,13 @@ function Post({userData=null}) {
 }
 
 export default Post
+{/* <div className='videos'>
+                  <Video source={post.pUrl} id={post.pId}/>
+                  <div className='fa' style={{display:'flex'}}>
+                    <Avatar src={post.uProfile}></Avatar>
+                    <h4>{post.uName}</h4>
+                  </div>
+                 
+                </div>
+
+                <div className='place'></div> */}

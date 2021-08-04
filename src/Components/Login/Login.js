@@ -5,6 +5,7 @@ import photo2 from './LoginImages/photo2.jpg';
 import photo3 from './LoginImages/photo3.jpg';
 import photo4 from './LoginImages/photo4.jpg';
 import img from './LoginImages/images.png';
+import Button from '@material-ui/core/Button';
 
 import {useHistory} from 'react-router-dom';
 import {AuthContext} from 'C:\\Users\\asus.LAPTOP-F97U0B83\\Desktop\\reels\\src\\Context\\AuthProvider.js'
@@ -35,6 +36,7 @@ function Login() {
             setLoading(false);
         }
     }
+    const preventDefault = (event) => event.preventDefault();
     useEffect(()=>{
         if(currentUser){
             history.push('/');
@@ -57,8 +59,16 @@ function Login() {
                                 <input className="inp-field" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Email"></input>
                                 <input type ="password" className="inp-field" value ={password} onChange={(e)=>setPassword(e.target.value)} placeholder ="Password"></input>
                                 <button type='submit' disabled={loading} className="login-btn">Log In</button>
-                                {error ? <h1>{error}</h1>:<></>}
+                                <div className="divider">
+                                    <div className="sep1"><hr></hr></div>
+                                    <div>OR</div>
+                                    <div className="sep2"><hr></hr></div>
+                                </div>
+                                {error ? <h3 style={{color:"red"}}>{error}</h3>:<></>}
                             </form>
+                            <div className="forSignUp">
+                                <h5>Don't have an account?<Button onClick={()=> history.push("/signup")}>Sign Up</Button></h5>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -8,10 +8,15 @@ import instaLogo from './Login/LoginImages/images.png';
 import { white } from 'jest-matcher-utils/node_modules/chalk';
 import HomeIcon from '@material-ui/icons/Home';
 import { useHistory } from 'react-router-dom';
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import TelegramIcon from '@material-ui/icons/Telegram';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
+    dispaly:"flex",
     backgroundColor: white,
   },
   menuButton: {
@@ -24,30 +29,35 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor:white
   },
   home:{
-    height: "27px",
+    height: "30px",
     fill: "black",
+  },
+  small:{
+    height:"30px",
+    width:"30px"
+  },
+  chat:{
+    height:"30px",
+    fill:"black",
+    marginLeft:"10px"
   }
 }));
 
-export default function MenuAppBar() {
+export default function MenuAppBar({userData=null}) {
   let history = useHistory();
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const {logout} = useContext(AuthContext);
+  console.log(userData);
 
-  // const handleChange = (event) => {
-  //   setAuth(event.target.checked);
-  // };
-
-  // const handleMenu = (event) => {
-  //   setAnchorEl(event.currentTarget);
-  // };
-
-  // const handleClose = () => {
-  //   setAnchorEl(null);
-  // };
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   const handleLogout= async()=>{
     await logout();
     history.push('/')
@@ -61,9 +71,25 @@ export default function MenuAppBar() {
             <img style={{height: "53px", marginTop:"2px", marginLeft:"160px"}} alt="Instagram Logo"src={instaLogo}></img>
           </Typography>
           <HomeIcon className={classes.home}/>
+          <TelegramIcon className={classes.chat}/>
+          <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+        <Avatar alt="Remy Sharp" src={userData.profileUrl} className={classes.small} />
+        </Button>
+        <Menu
+        id="simple-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
+        <MenuItem onClick={handleClose}>Profile</MenuItem>
+        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+      </Menu>
         </Toolbar>
       </AppBar>
-      <button type="submit" onClick={handleLogout}>Logout</button>
+      
     </div>
   );
 }
+
+
