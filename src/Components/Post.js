@@ -177,6 +177,9 @@ function Post({userData=null}) {
                           </div>
                         </MuiDialogContent>
                       </Dialog>
+                      <div className="comment">
+                        <AddComment  userData={userData} postData={post}/> 
+                      </div>
                 </article>
                   <div className="gap"></div>
               </React.Fragment>

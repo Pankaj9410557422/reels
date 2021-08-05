@@ -6,11 +6,13 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import UploadFile from './UploadFile';
 import './Feed.css';
 import Posts from './Post';
+import Profile from './Profile';
 
 
 function Feed() {
     const {currentUser} = useContext(AuthContext);
     const [userData,setUserData] = useState(null);
+    const [flag, setFlag] =useState(false);
     useEffect(()=>{
         const unsub = database.users.doc(currentUser.uid).onSnapshot((doc)=>{
             // console.log(doc.data());
@@ -23,20 +25,20 @@ function Feed() {
                 <Navbar userData={userData}/> 
                 <div className="feed-container">
                     <div className="center">
-                        <UploadFile userData={userData}/>
+                        { flag==false?<>
+                            <UploadFile userData={userData}/>
                         <div className="post-container">
                             <Posts userData={userData}/>
-                        </div>
+                        </div> 
+                        </>:<><Profile/></>
+                        }
                     </div>
                 </div>    
             </>:<CircularProgress/>
-            }  
-            
-            
-            
-            
+            }   
         </div>
     )
 }
 
 export default Feed
+

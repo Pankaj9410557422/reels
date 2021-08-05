@@ -140,10 +140,17 @@
   }
   .feedback{
       height:40px;
-      border:1px solid gray;
+      border-left:1px solid gray;
+      border-right:1px solid gray;
       display:flex;
       align-items: center;
   }
   .gap{
-      height:40px;
+      height:75px;
+  }
+  .comment{
+    border-left:1px solid gray;
+    border-right:1px solid gray;
+    border-bottom:1px solid gray;
+    height:49px;
   }
