@@ -13,12 +13,13 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import TelegramIcon from '@material-ui/icons/Telegram';
-import Profile from './Profile';
+import {Link} from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    dispaly:"flex",
+    display:"flex",
     backgroundColor: white,
+    
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -30,7 +31,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor:white
   },
   home:{
-    height: "30px",
     fill: "black",
   },
   small:{
@@ -41,6 +41,10 @@ const useStyles = makeStyles((theme) => ({
     height:"30px",
     fill:"black",
     marginLeft:"10px"
+  },
+  stl:{
+    marginLeft:"24%",
+    marginRight:"26%"
   }
 }));
 
@@ -52,9 +56,10 @@ export default function MenuAppBar({userData=null}) {
   const open = Boolean(anchorEl);
   const {logout} = useContext(AuthContext);
   
-  console.log(userData);
+  
 
   const handleClick = (event) => {
+    // console.log(event.currentTarget);
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
@@ -68,11 +73,13 @@ export default function MenuAppBar({userData=null}) {
   return (
     <div className={classes.root}>
       <AppBar position="static" style={{backgroundColor: "white", height:"56px"}}>
-        <Toolbar>
+        <Toolbar className={classes.stl}>
           <Typography variant="h6" className={classes.title}>
-            <img style={{height: "53px", marginTop:"2px", marginLeft:"160px"}} alt="Instagram Logo"src={instaLogo}></img>
+            <img style={{height: "53px", marginTop:"2px"}} alt="Instagram Logo"src={instaLogo}></img>
           </Typography>
+          <Link to='/'>
           <HomeIcon className={classes.home}/>
+          </Link>
           <TelegramIcon className={classes.chat}/>
           <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
         <Avatar alt="Remy Sharp" src={userData.profileUrl} className={classes.small} />
@@ -84,7 +91,9 @@ export default function MenuAppBar({userData=null}) {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
+        <Link to='/profile' style={{textDecoration:"none",color:"inherit"}}>
         <MenuItem onClick={handleClose}>Profile</MenuItem>
+        </Link>
         <MenuItem onClick={handleLogout}>Logout</MenuItem>
       </Menu>
         </Toolbar>

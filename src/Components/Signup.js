@@ -47,7 +47,8 @@ function Signup() {
                 username:name,
                 createdAt:database.getCurrentTimeStamp(),
                 profileUrl:downloadUrl,
-                postIds:[]
+                postIds:[],
+                bio:""
             })
             setLoading(false);
             console.log('User has Signed up');

@@ -193,13 +193,3 @@ function Post({userData=null}) {
 }
 
 export default Post
-{/* <div className='videos'>
-                  <Video source={post.pUrl} id={post.pId}/>
-                  <div className='fa' style={{display:'flex'}}>
-                    <Avatar src={post.uProfile}></Avatar>
-                    <h4>{post.uName}</h4>
-                  </div>
-                 
-                </div>
-
-                <div className='place'></div> */}
