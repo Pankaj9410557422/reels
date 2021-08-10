@@ -27,6 +27,9 @@ const useStyles=makeStyles(()=>({
 function Bio({userData=null}) {
     const classes = useStyles();
     // console.log(userData);
+    const addBio=()=>{
+        
+    }
     return (
         <div className={classes.base}>
             <Avatar alt={userData.username} src={userData.profileUrl} className={classes.styl} />
@@ -34,7 +37,7 @@ function Bio({userData=null}) {
             <div className={classes.about}>
                 <h1>{userData.username}</h1>
                 <h4>No. of posts : {userData.postIds.length} </h4>
-                {userData.bio===""?<Button>Add Bio</Button>:<Button>Update Bio</Button>
+                {userData.bio===""?<Button onClick={addBio}>Add Bio</Button>:<Button>Update Bio</Button>
 
                 }
 

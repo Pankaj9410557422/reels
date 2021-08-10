@@ -14,7 +14,7 @@ const useStyles= makeStyles({
 function Comments(props) {
     const classes=useStyles();
     const [comments, setComments] = useState(null);
-    useState(async()=>{
+    useEffect(async()=>{
         let arr=[];
         for(let i=0; i<props.postData.comments.length;i++){
             let cId = props.postData.comments[i];
