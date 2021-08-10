@@ -24,6 +24,7 @@ function Comments(props) {
         console.log(arr);
         setComments(arr);
     },[props.postData])
+    console.log(props);
     return (
         <>
         {

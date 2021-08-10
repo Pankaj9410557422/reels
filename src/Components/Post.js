@@ -136,7 +136,7 @@ function Post({userData=null}) {
                   <Likes userData={userData} postData={post}/>
                   <ModeCommentOutlinedIcon onClick={() => handleClickOpen(post.pId)} className={classes.ci} />
                 </div>
-                      <Dialog maxWidth="md" onClose={handleClose} aria-labelledby="customized-dialog-title" open={openId === post.pId}>
+                     <Dialog maxWidth="md" onClose={handleClose} aria-labelledby="customized-dialog-title" open={openId === post.pId}>
                         <MuiDialogContent>
                           <div className='dcontainer'>
                             <div className='video-part'>

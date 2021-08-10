@@ -1,8 +1,9 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
+
 import cameraimg from './camera.png'
+import CustomModal from './Modal';
 
 const useStyles=makeStyles(()=>({
     styl:{
@@ -27,9 +28,6 @@ const useStyles=makeStyles(()=>({
 function Bio({userData=null}) {
     const classes = useStyles();
     // console.log(userData);
-    const addBio=()=>{
-        
-    }
     return (
         <div className={classes.base}>
             <Avatar alt={userData.username} src={userData.profileUrl} className={classes.styl} />
@@ -37,7 +35,7 @@ function Bio({userData=null}) {
             <div className={classes.about}>
                 <h1>{userData.username}</h1>
                 <h4>No. of posts : {userData.postIds.length} </h4>
-                {userData.bio===""?<Button onClick={addBio}>Add Bio</Button>:<Button>Update Bio</Button>
+                {userData.bio===""?<CustomModal action="Add Bio" userData={userData}/>:<CustomModal userData ={userData} action="Update Bio"/>
 
                 }
 

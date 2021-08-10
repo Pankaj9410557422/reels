@@ -9,7 +9,7 @@
 .outer{
     margin-top:10px;
     height: 70%;
-    width: 30%;
+    min-width: 250px;
     /* position: relative; */
     /* border:1px solid red; */
     overflow:hidden;
@@ -22,6 +22,21 @@
     min-width: 100%;
     position: relative;
     top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.like-icon{
+    opacity:0;
+    color:white
+}
+
+.inner:hover .like-icon{
+    opacity:1;
+}
+
+.inner:hover{
+    background:rgba(99, 98, 98, 0.5);
 }
 
 ::-webkit-scrollbar {

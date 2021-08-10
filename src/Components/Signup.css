@@ -1,0 +1,41 @@
+.cont2{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal{
+    height: 618px;
+    width:454px;
+}
+.signup-section{
+    border:1px solid rgb(163, 161, 161);
+    width: 377px;
+    height: 492px;
+    margin: auto;
+    margin-top:5px;
+}
+.inp-field2{
+    height: 32px;
+    width: 283px;
+    margin-bottom: 10px;
+    margin-left:43px ;
+}
+.signup-btn{
+    height:30px;
+    width:30px;
+    width:292px;
+    background-color: rgb(0, 149, 246);
+    border:none;
+    border-radius: 4px;
+    margin-left: 40px;
+    color:white;
+    font-size: medium;
+}
+.heading{
+    color: rgba(var(--f52,142,142,142),1);
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 20px;
+    margin: 0 40px 10px;
+    text-align: center;
+}

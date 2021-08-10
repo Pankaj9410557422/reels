@@ -1,8 +1,17 @@
 import React,{useState,useEffect,useContext} from 'react'
 import {AuthContext} from '../Context/AuthProvider';
 import { storage,database } from './firebaseData';
+import './Signup.css'
 import { useHistory } from 'react-router-dom';
+import img from '../Components/Login/LoginImages/images.png'
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import BackupOutlinedIcon from '@material-ui/icons/BackupOutlined';
+const useStyles = makeStyles((theme) => ({
+    
+}));
 function Signup() {
+    const classes = useStyles();
     const [email,setEmail] =useState('');
     const[password,setPassword] = useState('');
     const [name,setName] =useState('');
@@ -78,9 +87,44 @@ function Signup() {
         }
       },[])
     return (
-        <div>
-            <form onSubmit={handleSignup} >
-                <div>
+        <div className="cont2">
+            <div className="modal">
+                <div className="signup-section">
+                    <img className ='instaLogo' alt="Intagram Logo" src={img}></img>
+                    <form onSubmit={handleSignup} >
+                        <h2 className="heading">Signup to see videos from your friends</h2>
+                        <input className="inp-field2" type='text' value={name} onChange={(e)=>setName(e.target.value)} placeholder="User Name"></input>
+                        <input className="inp-field2" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Email"></input>
+                        <input type ="password" className="inp-field2" value ={password} onChange={(e)=>setPassword(e.target.value)} placeholder ="Password"></input>
+                        <div style={{paddingLeft:"95px",marginBottom:"15px"}}>
+                            <input type='file' accept='image/*' onChange={handleFileSubmit} style={{display:"none"}}></input>
+                            <label htmlFor='icon-button-file'>
+                                <Button  disabled={loading} variant="outlined" color="secondary" component="span"  className={classes.button} size="medium">
+                                <BackupOutlinedIcon/>
+                                Profile Picture
+                                </Button>
+                            </label>
+                        </div>
+                        <button type='submit' disabled={loading} className="signup-btn">SignUp</button>
+                        <div className="divider">
+                                    <div className="sep1"><hr></hr></div>
+                                    <div>OR</div>
+                                    <div className="sep2"><hr></hr></div>
+                                </div>
+                        {error ? <h3 style={{color:"red"}}>{error}</h3>:<></>}
+                    </form>
+                    <div className="forSignUp">
+                                <h5>Already have an account?<Button onClick={()=> history.push("/login")}>Login In</Button></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default Signup
+
+{/* <div>
                     <label htmlFor=''>UserName</label>
                     <input type='text' value={name} onChange={(e)=>setName(e.target.value)}/>
 
@@ -93,14 +137,10 @@ function Signup() {
                 <label htmlFor=''>Password</label>
                     <input type='password' value={password} onChange={(e)=>setPassword(e.target.value)}/>
                 </div>
-                <div>
-                    <label htmlFor='profile'>Profile image</label>
-                    <input type='file' accept='image/*' onChange={handleFileSubmit}></input>
-                </div>
-                <button type='submit' disabled={loading}>SignUp</button>
-            </form>
-        </div>
-    )
-}
+                
+                <button type='submit' disabled={loading}>SignUp</button> */}
 
-export default Signup
+            //     <div>
+            //     <label htmlFor='profile'>Profile image</label>
+            //     <input type='file' accept='image/*' onChange={handleFileSubmit}></input>
+            // </div>

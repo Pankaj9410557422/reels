@@ -42,7 +42,7 @@ function Likes({userData=null,postData=null}) {
             })
         }
     }
- 
+    console.log(postData);
     return (
         <div>
             {

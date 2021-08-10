@@ -68,6 +68,9 @@
     padding-right: 44px;
     padding-top: 11px;
 }
+.forSignUp{
+    padding-left:76px;
+}
 @media screen and (max-width :925px) {
     .phoneimg{
         width:0px;
