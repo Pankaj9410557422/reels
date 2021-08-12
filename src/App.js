@@ -5,7 +5,7 @@ import Login from './Components/Login/Login';
 import {BrowserRouter,Switch,Route} from 'react-router-dom'
 import Feed from './Components/Feed';
 import PrivateRoute from './Components/PrivateRoute';
-import Profile from './Components/Profile';
+import Profile from './Components/Profile';  
 
 function App() {
   return (

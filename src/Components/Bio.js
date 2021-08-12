@@ -13,6 +13,7 @@ const useStyles=makeStyles(()=>({
     },
     base:{
         display:"flex",
+        justifyContent:"space-between",
         paddingTop:"20px",
         paddingBottom:"20px",
         position:"relative"
