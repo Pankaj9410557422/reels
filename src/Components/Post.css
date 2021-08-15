@@ -76,7 +76,7 @@
     display: flex;
     align-items: center;
     height:50px;
-    border:1px solid gray;
+    /* border:1px solid gray; */
     padding-left:10px;
 }
 .fa h4{
@@ -132,25 +132,25 @@
 
   /* my styling  */
   .cont{
-      /* border:1px solid; */
-      height:640px;
+      border:1px solid gray;
+      height:720px;
       width:95%;
       margin-top: 25px;
       /* scroll-snap-type: y mandatory; */
   }
   .feedback{
       height:40px;
-      border-left:1px solid gray;
-      border-right:1px solid gray;
+      /* border-left:1px solid gray; */
+      /* border-right:1px solid gray; */
       display:flex;
       align-items: center;
   }
   .gap{
-      height:75px;
+      /* height:px; */
   }
   .comment{
-    border-left:1px solid gray;
-    border-right:1px solid gray;
-    border-bottom:1px solid gray;
+    /* border-left:1px solid gray; */
+    /* border-right:1px solid gray; */
+    /* border-bottom:1px solid gray; */
     height:49px;
   }

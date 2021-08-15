@@ -97,7 +97,7 @@ function Signup() {
                         <input className="inp-field2" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Email"></input>
                         <input type ="password" className="inp-field2" value ={password} onChange={(e)=>setPassword(e.target.value)} placeholder ="Password"></input>
                         <div style={{paddingLeft:"95px",marginBottom:"15px"}}>
-                            <input type='file' accept='image/*' onChange={handleFileSubmit} style={{display:"none"}}></input>
+                            <input type='file' accept='image/*' onChange={handleFileSubmit} style={{display : 'none'}} id="icon-button-file"></input>
                             <label htmlFor='icon-button-file'>
                                 <Button  disabled={loading} variant="outlined" color="secondary" component="span"  className={classes.button} size="medium">
                                 <BackupOutlinedIcon/>
